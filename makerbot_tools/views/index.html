@@ -16,15 +16,15 @@
     <li ng-repeat="file in files">
     <span>{{ng("file.name")}}</span>
     <span ng-show="idle()">
-      <a class="btn btn-mini btn-primary" href="{{ng("file.print_url")}}">print</a>
-      <a class="btn btn-mini btn-danger" href="{{ng("file.delete_url")}}">delete</a>
+      <a class="btn btn-mini btn-primary" href="{{ng("file.print_url")}}">imprimer</a>
+      <a class="btn btn-mini btn-danger" href="{{ng("file.delete_url")}}">supprimer</a>
     </span>
     </li>
   </ul>
   <br>
   <span class="btn btn-success fileinput-button">
       <i class="icon-plus icon-white"></i>
-      <span>Add new file...</span>
+      <span>Ajouter un fichier...</span>
       <!-- The file input field used as target for the file upload widget -->
       <input id="fileupload" type="file" name="file" multiple>
   </span>
