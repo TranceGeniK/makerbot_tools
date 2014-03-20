@@ -231,6 +231,7 @@ def files():
         data.append(dict(
             name=basename,
             print_url='/api/print/' + basename,
+            delete_url='/delete/' + basename,
         ))
     return dict(files=data)
 
@@ -288,6 +289,13 @@ def upload():
             fdout.write(line)
     return files()
 
+@bottle.get('/delete/:filename')
+def delete_file(filename=None):
+    try:
+        os.remove(os.path.join(upload_dir, filename))
+        return dict(success=True)
+    except OSError, e:  ## if failed, report it back to the user ##
+        return dict(success=False, Error=e.strerror)
 
 @bottle.route('/static/<path:path>')
 def static(path):
