@@ -293,7 +293,7 @@ def upload():
 def delete_file(filename=None):
     try:
         os.remove(os.path.join(upload_dir, filename))
-        return dict(success=True)
+        bottle.redirect('/')
     except OSError, e:  ## if failed, report it back to the user ##
         return dict(success=False, Error=e.strerror)
 
