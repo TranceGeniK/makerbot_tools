@@ -248,6 +248,12 @@ def print_file(filename=None):
     else:
         return dict(success=False, result=data)
 
+@bottle.get('/api/cancel/:job_id')
+def cancel_job(job_id):
+    data = call_client('canceljob', {id : job_id})
+    return dict(result=data)
+
+
 
 @bottle.put('/upload')
 def upload():

@@ -4,10 +4,10 @@ $('#progress, #error').hide();
 
 function PrinterCtrl($scope, $http) {
     $scope.timeout = 3000;
-    $scope.title = 'Loading...';
+    $scope.title = 'Chargement...';
 
     $scope.printer = {
-        displayName: 'Loading...',
+        displayName: 'Chargement...',
         uniqueName: '',
         state: 'IDLE' // 'DISCONNECTED'
     }
@@ -28,8 +28,16 @@ function PrinterCtrl($scope, $http) {
             if (data.success && data.result) {
                 var p = data.result, t = null;
                 $scope.printer = p;
-                t =  p.displayName + ' ' + p.uniqueName + ' (' + p.state + ')';
-                $scope.title = t;
+                if(p.state === 'IDLE')
+                {
+                    stateClass = 'green' ;
+                }
+                else
+                {
+                    stateClass = 'red' ;
+                }
+                stateHtml = '<span class="' + stateClass + '"> (' +  p.state + ')' ;
+                t =  p.displayName + ' ' + p.uniqueName + stateHtml;
                 $('title').text(t);
                 if (!$scope.idle()) {
                     $http.get('/api/jobs').success(function(data) {

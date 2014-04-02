@@ -5,6 +5,7 @@
       <span>{{ng("job.name")}}</span>
       <span ng-show="job.state == 'RUNNING'" class="btn btn-small btn-success">{{ng("job.type")}} {{ng("job.state")}}</span>
       <span ng-show="job.state != 'RUNNING'" class="btn btn-small btn-inverse">{{ng("job.type")}} {{ng("job.state")}}</span>
+      <a class="btn btn-mini btn-danger" href="/api/cancel/{{ng('job.id')}}">Annuler</a>
       <pre style="display:none">{{ng("job")}}</span>
     </li>
   </ul>

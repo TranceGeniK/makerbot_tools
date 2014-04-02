@@ -6165,3 +6165,11 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+.red {
+  color : red;
+}
+
+.green {
+  color : #5bb75b;
+}
